@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PawsHome — Premium Pet Shop</title>
+<meta name="description" content="PawsHome is your one-stop premium pet shop. Shop food, toys, accessories and more for dogs, cats, birds and fish — delivered to your door."/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+/* ── Hero ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px;padding:120px 5% 80px;background:linear-gradient(160deg,#EEF4FF 0%,#F8FAFF 55%,#E8FAF9 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(91,141,239,.12),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(78,205,196,.1),transparent 70%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(91,141,239,.1);color:var(--blue);padding:8px 18px;border-radius:50px;font-size:.83rem;font-weight:600;margin-bottom:22px;animation:fadeUp .6s ease both}
+.hero h1{font-size:3.3rem;font-weight:800;line-height:1.18;margin-bottom:20px;animation:fadeUp .6s .1s ease both}
+.hero h1 span{background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--gray);font-size:1.08rem;line-height:1.75;margin-bottom:36px;max-width:480px;animation:fadeUp .6s .2s ease both}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
+.hero-stats{display:flex;gap:32px;margin-top:40px;animation:fadeUp .6s .4s ease both}
+.stat{text-align:left}
+.stat-num{font-size:1.6rem;font-weight:800;color:var(--dark)}
+.stat-label{font-size:.8rem;color:var(--gray);margin-top:2px}
+.hero-img-wrap{position:relative;animation:fadeRight .7s .2s ease both}
+.hero-img-wrap img{width:100%;max-width:540px;border-radius:30px;box-shadow:0 20px 60px rgba(91,141,239,.2);object-fit:cover;max-height:520px}
+.hero-badge{position:absolute;bottom:30px;left:-20px;background:var(--white);border-radius:16px;padding:14px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;animation:float 3s ease-in-out infinite}
+.hero-badge-icon{font-size:1.8rem}
+.hero-badge p{font-size:.8rem;color:var(--gray);margin-top:2px}
+.hero-badge strong{font-size:.95rem;font-weight:700;color:var(--dark)}
+.hero-pill{position:absolute;top:20px;right:20px;background:linear-gradient(135deg,var(--pink),#FF8FAB);color:#fff;border-radius:50px;padding:10px 18px;font-size:.82rem;font-weight:700;box-shadow:0 6px 20px rgba(255,107,157,.3);animation:float 3.5s 1s ease-in-out infinite}
+
+/* ── Categories ── */
+.cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.cat-card{border-radius:var(--radius);overflow:hidden;cursor:pointer;position:relative;box-shadow:var(--shadow);transition:var(--transition)}
+.cat-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.cat-card img{width:100%;height:220px;object-fit:cover;transition:transform .45s ease}
+.cat-card:hover img{transform:scale(1.08)}
+.cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,46,.7) 0%,transparent 55%);display:flex;align-items:flex-end;padding:20px}
+.cat-label{color:#fff;font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:8px}
+
+/* ── Featured Products ── */
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+/* ── Why Us ── */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.why-card{text-align:center;padding:36px 24px;border-radius:var(--radius);background:var(--white);box-shadow:var(--shadow);transition:var(--transition)}
+.why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.why-icon{width:70px;height:70px;border-radius:20px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.why-card h3{font-size:1.05rem;font-weight:700;margin-bottom:10px}
+.why-card p{font-size:.88rem;color:var(--gray);line-height:1.65}
+
+/* ── Testimonials ── */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testi-card{padding:32px;border-radius:var(--radius);background:var(--white);box-shadow:var(--shadow);transition:var(--transition);position:relative}
+.testi-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.testi-quote{font-size:3rem;color:var(--blue);opacity:.15;position:absolute;top:16px;right:20px;font-family:serif;line-height:1}
+.testi-stars{color:#F7971E;font-size:1rem;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:.92rem;color:var(--gray);line-height:1.75;margin-bottom:20px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:14px}
+.testi-avatar{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:linear-gradient(135deg,var(--blue),var(--teal))}
+.testi-name{font-weight:700;font-size:.95rem}
+.testi-pet{font-size:.8rem;color:var(--gray);margin-top:2px}
+
+/* ── Blog Tips ── */
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.tip-card{border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow);transition:var(--transition)}
+.tip-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.tip-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.tip-body{padding:22px}
+.tip-tag{display:inline-block;background:rgba(91,141,239,.1);color:var(--blue);font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:50px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+.tip-body h3{font-size:1rem;font-weight:700;margin-bottom:10px;line-height:1.35}
+.tip-body p{font-size:.87rem;color:var(--gray);line-height:1.65;margin-bottom:14px}
+.tip-link{color:var(--blue);font-size:.87rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:var(--transition)}
+.tip-link:hover{gap:10px}
+
+/* ── CTA Banner ── */
+.cta-banner{padding:90px 5%;text-align:center;background:linear-gradient(135deg,var(--blue),var(--teal));position:relative;overflow:hidden}
+.cta-banner::before{content:'🐾';position:absolute;font-size:12rem;opacity:.07;top:-20px;left:5%;pointer-events:none}
+.cta-banner::after{content:'🐾';position:absolute;font-size:10rem;opacity:.07;bottom:-10px;right:5%;pointer-events:none}
+.cta-banner h2{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:14px}
+.cta-banner p{color:rgba(255,255,255,.85);font-size:1.05rem;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
+.btn-white{background:#fff;color:var(--blue);font-weight:700;padding:15px 38px;border-radius:50px;font-size:1rem;box-shadow:0 6px 24px rgba(0,0,0,.15);transition:var(--transition)}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.2)}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ── Responsive ── */
+@media(max-width:1024px){.hero{grid-template-columns:1fr;text-align:center;padding-top:100px}.hero-sub{margin:0 auto 36px}.hero-ctas{justify-content:center}.hero-stats{justify-content:center}.hero-img-wrap{display:none}.cats-grid{grid-template-columns:repeat(2,1fr)}.products-grid{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:repeat(2,1fr)}.testi-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.hero h1{font-size:2.2rem}.cta-banner h2{font-size:1.8rem}.products-grid{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}.tips-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="paw">🐾</span> <span>PawsHome</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="location.href='shop.html'" title="Cart" id="cart-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-badge" style="display:none">0</span>
+      </button>
+      <a href="shop.html" class="btn-nav">Shop Now</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" class="active">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">🐾 Premium Pet Shop</div>
+    <h1>Everything Your Pet Loves,<br/><span>Delivered to Your Door</span> 🐾</h1>
+    <p class="hero-sub">Because your pet deserves the very best — nutritious food, exciting toys, and tender care, all in one place.</p>
+    <div class="hero-ctas">
+      <a href="shop.html" class="btn btn-primary">Shop Now 🛍️</a>
+      <a href="about.html" class="btn btn-outline">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">Happy Pets</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Products</div></div>
+      <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Avg. Rating</div></div>
+    </div>
+  </div>
+  <div class="hero-img-wrap">
+    <img src="images/hero.png" alt="Happy dog and cat"/>
+    <div class="hero-badge">
+      <div class="hero-badge-icon">🚚</div>
+      <div><strong>Free Delivery</strong><p>On orders over $35</p></div>
+    </div>
+    <div class="hero-pill">🎉 20% Off Today!</div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section section-alt">
+  <div class="section-center">
+    <div class="section-tag">Browse by Pet</div>
+    <h2 class="section-title">Shop by <span>Category</span></h2>
+    <p class="section-sub">Find everything your furry, feathered or finned friend needs.</p>
+  </div>
+  <div class="cats-grid">
+    <a href="shop.html?cat=dogs" class="cat-card">
+      <img src="images/dog.png" alt="Dogs"/>
+      <div class="cat-overlay"><div class="cat-label">🐶 Dogs</div></div>
+    </a>
+    <a href="shop.html?cat=cats" class="cat-card">
+      <img src="images/cat.png" alt="Cats"/>
+      <div class="cat-overlay"><div class="cat-label">🐱 Cats</div></div>
+    </a>
+    <a href="shop.html?cat=birds" class="cat-card">
+      <img src="images/bird.png" alt="Birds"/>
+      <div class="cat-overlay"><div class="cat-label">🦜 Birds</div></div>
+    </a>
+    <a href="shop.html?cat=fish" class="cat-card">
+      <img src="images/fish.png" alt="Fish"/>
+      <div class="cat-overlay"><div class="cat-label">🐠 Fish</div></div>
+    </a>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section">
+  <div class="section-center">
+    <div class="section-tag">Handpicked for You</div>
+    <h2 class="section-title">Featured <span>Products</span></h2>
+    <p class="section-sub">Top-rated items loved by thousands of pet parents.</p>
+  </div>
+  <div class="products-grid" id="featured-grid"></div>
+  <div style="text-align:center;margin-top:44px"><a href="shop.html" class="btn btn-outline">View All Products →</a></div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section section-alt">
+  <div class="section-center">
+    <div class="section-tag">Why PawsHome</div>
+    <h2 class="section-title">We Put Pets <span>First</span></h2>
+    <p class="section-sub">Everything we do is designed around the health and happiness of your pet.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon" style="background:linear-gradient(135deg,rgba(91,141,239,.15),rgba(78,205,196,.15))">🚀</div>
+      <h3>Fast Delivery</h3>
+      <p>Get your orders within 24–48 hours. Free shipping on orders over $35.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:linear-gradient(135deg,rgba(255,107,157,.15),rgba(247,151,30,.15))">🏆</div>
+      <h3>Premium Quality</h3>
+      <p>All products are vet-approved and sourced from trusted brands worldwide.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:linear-gradient(135deg,rgba(78,205,196,.15),rgba(168,230,207,.15))">🛡️</div>
+      <h3>Pet Safe Products</h3>
+      <p>No harmful chemicals. Every item is tested for safety so you can shop worry-free.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:linear-gradient(135deg,rgba(247,151,30,.15),rgba(255,210,0,.15))">💰</div>
+      <h3>Affordable Prices</h3>
+      <p>Premium quality doesn't have to break the bank. Best prices guaranteed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section">
+  <div class="section-center">
+    <div class="section-tag">Customer Love</div>
+    <h2 class="section-title">What Pet Parents <span>Say</span></h2>
+    <p class="section-sub">Real reviews from real pet families who trust PawsHome.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"My golden retriever Max absolutely loves the nutrition food from PawsHome. His coat has never been shinier. Fast delivery too — arrived the very next day!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👩</div>
+        <div><div class="testi-name">Sarah Mitchell</div><div class="testi-pet">Dog Mom 🐶</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I bought the cat tree tower for my Luna and she hasn't left it since! Quality is amazing, super sturdy. PawsHome is now my go-to shop for everything."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👨</div>
+        <div><div class="testi-name">James Thornton</div><div class="testi-pet">Cat Dad 🐱</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The aquarium starter kit is fantastic — everything was included and set up in under an hour. My kids are obsessed with the fish tank now. Highly recommend!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👩</div>
+        <div><div class="testi-name">Priya Nair</div><div class="testi-pet">Fish Family 🐠</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pet Care Tips -->
+<section class="section section-alt">
+  <div class="section-center">
+    <div class="section-tag">Pet Care Blog</div>
+    <h2 class="section-title">Tips for Happy <span>Pets</span></h2>
+    <p class="section-sub">Expert advice to help you give your pet the best life possible.</p>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-thumb" style="background:linear-gradient(135deg,#EEF4FF,#DBE9FF)">🐶</div>
+      <div class="tip-body">
+        <span class="tip-tag">Dogs</span>
+        <h3>How to Care for Your Dog: A Complete Guide</h3>
+        <p>From nutrition to exercise and mental stimulation — everything you need to keep your dog thriving every single day.</p>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-thumb" style="background:linear-gradient(135deg,#FFF0F5,#FFD6E7)">🐱</div>
+      <div class="tip-body">
+        <span class="tip-tag" style="background:rgba(255,107,157,.1);color:var(--pink)">Cats</span>
+        <h3>Best Foods for Cats: What to Feed & What to Avoid</h3>
+        <p>Not all cat food is equal. Learn which ingredients truly benefit your cat and which ones to steer clear of.</p>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-thumb" style="background:linear-gradient(135deg,#E8FAF9,#CCFAF5)">✂️</div>
+      <div class="tip-body">
+        <span class="tip-tag" style="background:rgba(78,205,196,.1);color:var(--teal)">Grooming</span>
+        <h3>Grooming Tips That Keep Your Pet Looking Their Best</h3>
+        <p>Pro grooming tricks for dogs and cats — from coat brushing to nail care — that you can do right at home.</p>
+        <a href="#" class="tip-link">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+  <h2>Give Your Pet the Love They Deserve ❤️</h2>
+  <p>Join 10,000+ happy pet families who trust PawsHome for premium quality and care.</p>
+  <a href="shop.html" class="btn-white">Start Shopping 🛍️</a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="color:#fff;margin-bottom:4px"><span class="paw">🐾</span> <span>PawsHome</span></div>
+      <p>Your trusted partner for everything your pet loves. Premium products, delivered with care.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-icon">📘</a>
+        <a href="#" class="social-icon">📸</a>
+        <a href="#" class="social-icon">🐦</a>
+        <a href="https://wa.me/15551234567" class="social-icon">💬</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="shop.html?cat=dogs">🐶 Dogs</a></li>
+        <li><a href="shop.html?cat=cats">🐱 Cats</a></li>
+        <li><a href="shop.html?cat=birds">🦜 Birds</a></li>
+        <li><a href="shop.html?cat=fish">🐠 Fish</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="footer-contact-item"><span>📍</span><span>123 Pet Lane, Animal City, AC 10001</span></div>
+      <div class="footer-contact-item"><span>📞</span><span>+1 (555) 123-4567</span></div>
+      <div class="footer-contact-item"><span>💬</span><span>WhatsApp: +1 (555) 987-6543</span></div>
+      <div class="footer-contact-item"><span>📧</span><span>hello@pawshome.com</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 PawsHome. All rights reserved. Made with ❤️ for pets.</p>
+    <p>Privacy Policy · Terms of Service</p>
+  </div>
+</footer>
+
+<div id="cart-toast">🛒 Added to cart!</div>
+
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Render first 6 products as featured
+const grid = document.getElementById('featured-grid');
+PRODUCTS.slice(0,6).forEach(p => {
+  grid.innerHTML += `
+  <a href="product.html?id=${p.id}" class="card product-card" style="text-decoration:none;color:inherit">
+    <div class="product-img-wrap">
+      ${p.hasImage ? `<img src="${p.image}" alt="${p.name}" loading="lazy"/>` : `<div class="product-img-placeholder" style="background:${p.gradient}">${p.icon}</div>`}
+      ${p.badge ? `<span class="product-badge" style="background:${p.badgeColor}">${p.badge}</span>` : ''}
+    </div>
+    <div class="product-body">
+      <div class="product-cat">${p.categoryLabel}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-rating"><span class="stars">${renderStars(p.rating)}</span><span class="rating-count">(${p.reviews})</span></div>
+      <div class="product-price">
+        <span class="price-now">${formatPrice(p.price)}</span>
+        ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
+      </div>
+      <button class="add-cart-btn" onclick="event.preventDefault();addToCart(${p.id})">🛒 Add to Cart</button>
+    </div>
+  </a>`;
+});
+</script>
+</body>
+</html>

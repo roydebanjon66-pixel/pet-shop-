@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title id="page-title">Product — PawsHome</title>
+<meta name="description" content="View product details at PawsHome."/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;padding:40px 5% 90px}
+.product-gallery{position:sticky;top:90px}
+.gallery-main{width:100%;height:400px;border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:9rem;margin-bottom:16px}
+.gallery-main img{width:100%;height:100%;object-fit:cover}
+.product-info{}
+.product-info .product-cat{font-size:.82rem;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.product-info h1{font-size:1.9rem;font-weight:800;line-height:1.25;margin-bottom:14px}
+.info-rating{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.info-stars{color:#F7971E;font-size:1.1rem;letter-spacing:1px}
+.info-rating span{font-size:.88rem;color:var(--gray)}
+.info-price{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.info-price-now{font-size:2.2rem;font-weight:800;color:var(--dark)}
+.info-price-old{font-size:1.1rem;color:var(--gray);text-decoration:line-through}
+.info-badge{background:var(--pink);color:#fff;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:50px}
+.info-desc{color:var(--gray);font-size:.95rem;line-height:1.78;margin-bottom:24px}
+.info-features{list-style:none;margin-bottom:28px}
+.info-features li{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--gray);padding:7px 0;border-bottom:1px solid var(--lgray)}
+.info-features li::before{content:'✓';color:var(--teal);font-weight:700;font-size:1rem}
+.info-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:rgba(91,141,239,.06);border-radius:var(--radius-sm);padding:18px;margin-bottom:28px}
+.meta-item span:first-child{font-size:.78rem;color:var(--gray);display:block;margin-bottom:3px}
+.meta-item strong{font-size:.92rem;font-weight:600}
+.qty-row{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.qty-label{font-size:.88rem;color:var(--gray);font-weight:500}
+.qty-ctrl{display:flex;align-items:center;gap:2px;background:var(--lgray);border-radius:var(--radius-sm)}
+.qty-ctrl button{width:38px;height:38px;background:none;font-size:1.2rem;font-weight:700;color:var(--dark);border-radius:var(--radius-sm);transition:var(--transition)}
+.qty-ctrl button:hover{background:rgba(91,141,239,.15);color:var(--blue)}
+.qty-ctrl input{width:46px;height:38px;text-align:center;border:none;background:var(--white);font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:600}
+.action-row{display:flex;gap:14px;flex-wrap:wrap}
+.add-detail-btn{flex:1;padding:15px;border-radius:50px;background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;font-size:1rem;font-weight:700;transition:var(--transition);display:flex;align-items:center;justify-content:center;gap:8px}
+.add-detail-btn:hover{opacity:.9;transform:translateY(-2px)}
+.wish-btn{width:52px;height:52px;border-radius:50%;border:2px solid var(--lgray);background:none;font-size:1.3rem;transition:var(--transition)}
+.wish-btn:hover{border-color:var(--pink);transform:scale(1.1)}
+.related-section{padding:0 5% 90px}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.not-found{text-align:center;padding:120px 5%;color:var(--gray)}
+.not-found h1{font-size:1.8rem;margin-bottom:12px;color:var(--dark)}
+@media(max-width:860px){.product-detail{grid-template-columns:1fr}.product-gallery{position:static}.related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.related-grid{grid-template-columns:1fr}.action-row{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="paw">🐾</span> <span>PawsHome</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" title="Cart"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" style="display:none">0</span></button>
+      <a href="shop.html" class="btn-nav">Shop Now</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a><a href="shop.html" class="active">Shop</a>
+    <a href="about.html">About Us</a><a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding:110px 5% 50px">
+  <div class="breadcrumb" id="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="shop.html">Shop</a><span>›</span><span id="bc-name">Product</span></div>
+</div>
+
+<div id="product-detail-wrap"></div>
+
+<section class="related-section" id="related-section" style="display:none">
+  <div class="section-center" style="margin-bottom:36px">
+    <div class="section-tag">You May Also Like</div>
+    <h2 class="section-title">Related <span>Products</span></h2>
+  </div>
+  <div class="related-grid" id="related-grid"></div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="color:#fff;margin-bottom:4px"><span class="paw">🐾</span> <span>PawsHome</span></div>
+      <p>Your trusted partner for everything your pet loves.</p>
+      <div class="footer-socials"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">📸</a><a href="#" class="social-icon">🐦</a><a href="https://wa.me/15551234567" class="social-icon">💬</a></div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="shop.html?cat=dogs">🐶 Dogs</a></li><li><a href="shop.html?cat=cats">🐱 Cats</a></li><li><a href="shop.html?cat=birds">🦜 Birds</a></li><li><a href="shop.html?cat=fish">🐠 Fish</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span>📞</span><span>+1 (555) 123-4567</span></div><div class="footer-contact-item"><span>💬</span><span>WhatsApp Available</span></div><div class="footer-contact-item"><span>📧</span><span>hello@pawshome.com</span></div></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 PawsHome. All rights reserved.</p></div>
+</footer>
+<div id="cart-toast">🛒 Added to cart!</div>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>

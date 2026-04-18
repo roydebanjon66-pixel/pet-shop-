@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>About Us — PawsHome</title>
+<meta name="description" content="Learn the story behind PawsHome — why we started, what we believe, and how we are committed to making pets happier every day."/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.about-story{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:60px 5% 90px}
+.about-visual{position:relative}
+.about-img-main{width:100%;height:480px;border-radius:24px;object-fit:cover;box-shadow:var(--shadow-lg)}
+.about-img-placeholder{width:100%;height:480px;border-radius:24px;background:linear-gradient(135deg,#EEF4FF,#E8FAF9);display:flex;align-items:center;justify-content:center;font-size:10rem;box-shadow:var(--shadow-lg)}
+.about-floating{position:absolute;bottom:-20px;right:-20px;background:var(--white);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow-lg);text-align:center}
+.about-floating strong{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.about-floating span{font-size:.85rem;color:var(--gray)}
+.about-text .section-tag{text-align:left}
+.about-text h2{font-size:2.3rem;font-weight:800;line-height:1.25;margin-bottom:16px}
+.about-text p{color:var(--gray);font-size:.97rem;line-height:1.8;margin-bottom:16px}
+.about-values{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.value-item{display:flex;align-items:flex-start;gap:16px;padding:18px;background:rgba(91,141,239,.05);border-radius:var(--radius-sm);border-left:3px solid var(--blue)}
+.value-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px}
+.value-item h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.value-item p{font-size:.86rem;color:var(--gray);margin:0;line-height:1.6}
+.team-section{padding:0 5% 90px;text-align:center}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+.team-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:36px 24px;transition:var(--transition)}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.team-avatar{width:90px;height:90px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:2.4rem}
+.team-card h3{font-size:1.05rem;font-weight:700;margin-bottom:4px}
+.team-card .team-role{font-size:.83rem;color:var(--blue);font-weight:600;margin-bottom:10px}
+.team-card p{font-size:.87rem;color:var(--gray);line-height:1.65}
+.mission-band{background:linear-gradient(135deg,var(--blue),var(--teal));padding:80px 5%;text-align:center;color:#fff;margin-bottom:0}
+.mission-band h2{font-size:2.2rem;font-weight:800;margin-bottom:16px}
+.mission-band p{font-size:1rem;opacity:.9;max-width:560px;margin:0 auto 32px;line-height:1.75}
+@media(max-width:860px){.about-story{grid-template-columns:1fr}.about-visual{display:none}.team-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="paw">🐾</span> <span>PawsHome</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" title="Cart" onclick="location.href='shop.html'"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-badge" style="display:none">0</span></button>
+      <a href="shop.html" class="btn-nav">Shop Now</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a><a href="shop.html">Shop</a>
+    <a href="about.html" class="active">About Us</a><a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>About Us</span></div>
+  <h1>Our <span style="background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Story</span></h1>
+  <p>Born from a love for pets. Built for families who treat their animals like family.</p>
+</div>
+
+<!-- Story Section -->
+<section class="about-story">
+  <div class="about-visual">
+    <div class="about-img-placeholder">🐾</div>
+    <div class="about-floating"><strong>2019</strong><span>Founded with ❤️</span></div>
+  </div>
+  <div class="about-text">
+    <div class="section-tag">Our Beginning</div>
+    <h2>We Started Because We <span style="background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Love Pets</span></h2>
+    <p>PawsHome was founded in 2019 by two animal lovers who were frustrated by the lack of quality, safe, and affordable pet products in the market. We believe every pet — whether a playful puppy, a sleepy cat, a chirpy bird, or a dazzling fish — deserves the very best care.</p>
+    <p>What started as a small online store has grown into a community trusted by over 10,000 pet families worldwide. We carefully curate every product we sell, working only with brands that share our commitment to animal health and safety.</p>
+    <div class="about-values">
+      <div class="value-item">
+        <div class="value-icon">💚</div>
+        <div><h4>Pet Health First</h4><p>Every product is vet-reviewed. We never compromise on safety or quality.</p></div>
+      </div>
+      <div class="value-item" style="border-color:var(--pink)">
+        <div class="value-icon">🤝</div>
+        <div><h4>Community Driven</h4><p>We listen to our customers and build our catalogue around what pets actually need.</p></div>
+      </div>
+      <div class="value-item" style="border-color:var(--teal)">
+        <div class="value-icon">🌿</div>
+        <div><h4>Eco Conscious</h4><p>Our packaging is recyclable and we partner with brands that care about the planet.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission Band -->
+<div class="mission-band">
+  <h2>Our Mission 🐾</h2>
+  <p>"To make premium pet care accessible to every pet family — because every animal deserves a life full of health, happiness and love."</p>
+  <a href="shop.html" class="btn-white" style="background:#fff;color:var(--blue);font-weight:700;padding:14px 36px;border-radius:50px;font-size:.95rem;box-shadow:0 6px 20px rgba(0,0,0,.15);transition:.3s ease;display:inline-block">Shop Our Products</a>
+</div>
+
+<!-- Team -->
+<section class="team-section" style="padding-top:80px">
+  <div class="section-tag">The People Behind PawsHome</div>
+  <h2 class="section-title">Meet Our <span>Team</span></h2>
+  <p class="section-sub">A passionate group of pet lovers, nutrition experts and tech enthusiasts.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg,rgba(91,141,239,.2),rgba(78,205,196,.2))">👩‍💼</div>
+      <h3>Emily Watson</h3>
+      <div class="team-role">Co-Founder & CEO</div>
+      <p>Dog mom of three, former veterinary nutritionist. Emily oversees product quality and partnerships.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg,rgba(255,107,157,.2),rgba(247,151,30,.2))">👨‍💻</div>
+      <h3>Marcus Lee</h3>
+      <div class="team-role">Co-Founder & CTO</div>
+      <p>Cat enthusiast and engineer. Marcus built PawsHome from the ground up with a love for seamless UX.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="background:linear-gradient(135deg,rgba(78,205,196,.2),rgba(168,230,207,.2))">👩‍⚕️</div>
+      <h3>Dr. Priya Sharma</h3>
+      <div class="team-role">Head of Pet Nutrition</div>
+      <p>Certified veterinarian with 12 years of experience. Priya reviews every food product we carry.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Band -->
+<section style="background:var(--white);padding:70px 5%">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center;max-width:900px;margin:0 auto">
+    <div><div style="font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">10K+</div><div style="color:var(--gray);font-size:.9rem;margin-top:6px">Happy Customers</div></div>
+    <div><div style="font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,var(--pink),#FF8FAB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">500+</div><div style="color:var(--gray);font-size:.9rem;margin-top:6px">Products</div></div>
+    <div><div style="font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,var(--teal),#A8E6CF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">4.9★</div><div style="color:var(--gray);font-size:.9rem;margin-top:6px">Avg. Rating</div></div>
+    <div><div style="font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,var(--orange),#FFD200);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">6yr</div><div style="color:var(--gray);font-size:.9rem;margin-top:6px">In Business</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="color:#fff;margin-bottom:4px"><span class="paw">🐾</span> <span>PawsHome</span></div>
+      <p>Your trusted partner for everything your pet loves.</p>
+      <div class="footer-socials"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">📸</a><a href="#" class="social-icon">🐦</a><a href="https://wa.me/15551234567" class="social-icon">💬</a></div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="shop.html?cat=dogs">🐶 Dogs</a></li><li><a href="shop.html?cat=cats">🐱 Cats</a></li><li><a href="shop.html?cat=birds">🦜 Birds</a></li><li><a href="shop.html?cat=fish">🐠 Fish</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span>📞</span><span>+1 (555) 123-4567</span></div><div class="footer-contact-item"><span>💬</span><span>WhatsApp Available</span></div><div class="footer-contact-item"><span>📧</span><span>hello@pawshome.com</span></div></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 PawsHome. All rights reserved.</p></div>
+</footer>
+<div id="cart-toast">🛒 Added to cart!</div>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
